@@ -1,0 +1,67 @@
+<div class="product-list-container">
+  <div class="header-actions">
+    <h2>Product Management</h2>
+    <button kendoButton  (click)="openCreateForm()">Add New Product</button>
+  </div>
+
+  <kendo-grid
+  [data]="gridData"
+  [pageSize]="pageSize"
+  [skip]="skip"
+  [pageable]="true"
+  [filterable]="true"
+  [filter]="filter"
+  (dataStateChange)="dataStateChange($event)"
+  >
+    <kendo-grid-column field="id" title="ID"  [filterable]="true" ></kendo-grid-column>
+    <kendo-grid-column field="name" title="Name" [filterable]="true" ></kendo-grid-column>
+    <kendo-grid-column field="description" title="Description" [filterable]="true" ></kendo-grid-column>
+    <kendo-grid-column field="price" title="Price" [filterable]="true">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        {{ dataItem.price | currency }}
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column title="Actions" >
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <button kendoButton (click)="openEditDialog(dataItem)">Edit</button>
+        <button kendoButton (click)="confirmDelete(dataItem.id)">Delete</button>
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid>
+    
+  <kendo-dialog *ngIf="isFormVisible" [title]="formTitle" (close)="cancelForm()">
+    <form [formGroup]="productForm" >
+      <div class="form-group">
+        <kendo-label [for]="'name'" text="Product Name"></kendo-label>
+        <kendo-textbox formControlName="name" id="name" [clearButton]="true"></kendo-textbox>
+        <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched" class="error-message">
+          Product name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <kendo-label [for]="'description'" text="Description"></kendo-label>
+        <kendo-textarea formControlName="description" id="description" [rows]="3"></kendo-textarea>
+        <div *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched" class="error-message">
+          Description is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <kendo-label [for]="'price'" text="Price"></kendo-label>
+        <kendo-numerictextbox formControlName="price" id="price" [min]="0.01" [format]="'c2'"></kendo-numerictextbox>
+        <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched" class="error-message">
+          Valid price is required (minimum 0.01)
+        </div>
+      </div>
+
+      <kendo-dialog-actions>
+        <button kendoButton (click)="cancelForm()" type="button">Cancel</button>
+        <button kendoButton [primary]="true" type="submit">Save</button>
+      </kendo-dialog-actions>
+    </form>
+  </kendo-dialog>
+
+</div>
+<div kendoDialogContainer></div>
+

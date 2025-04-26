@@ -1,0 +1,30 @@
+<!-- product-form.component.html -->
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <div class="k-form-field">
+    <label for="name">Name</label>
+    <input kendoTextBox id="name" formControlName="name" />
+    <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched" class="k-form-error">
+      Name is required
+    </div>
+  </div>
+
+  <div class="k-form-field">
+    <label for="description">Description</label>
+    <textarea kendoTextArea id="description" formControlName="description"></textarea>
+  </div>
+
+  <div class="k-form-field">
+    <label for="price">Price</label>
+    <input kendoNumericTextBox id="price" formControlName="price" />
+    <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched" class="k-form-error">
+      Price must be a positive number
+    </div>
+  </div>
+
+  <div class="k-dialog-actions">
+    <button kendoButton type="button" (click)="onCancel()">Cancel</button>
+    <button kendoButton type="submit"  [disabled]="!productForm.valid">
+      Save
+    </button>
+  </div>
+</form>

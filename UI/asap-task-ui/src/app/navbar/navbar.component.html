@@ -1,0 +1,9 @@
+<nav class="app-navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">My Demo</div>
+
+    <div class="navbar-items" *ngIf="isLoggedIn">
+      <button  (click)="logout()"  class="logout-btn">Logout</button>
+    </div>
+  </div>
+</nav>

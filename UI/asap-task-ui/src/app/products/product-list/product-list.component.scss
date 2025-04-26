@@ -1,0 +1,49 @@
+.product-list-container {
+  padding: 20px;
+
+  .header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  kendo-grid {
+    margin-bottom: 20px;
+  }
+
+  .delete-btn {
+    margin-left: 8px;
+    color: #ff4747;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+
+    kendo-label {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    kendo-textbox, kendo-textarea, kendo-numerictextbox {
+      width: 100%;
+    }
+
+    .error-message {
+      color: #ff4747;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+  }
+
+  kendo-dialog-actions {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+}
