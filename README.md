@@ -1,8 +1,8 @@
 ﻿# 📦 Auth and Product Management System
 
 ## 🛠️ Tech Stack
-- Backend: ASP.NET Core 7
-- Frontend: Angular 16
+- Backend: ASP.NET Core 9
+- Frontend: Angular 18 
 - Database: Memory Data base
 - Authentication: JWT Bearer Tokens
 - UI Library: Kendo UI for Angular
