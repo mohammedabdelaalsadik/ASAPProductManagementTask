@@ -27,6 +27,9 @@
   - `RegisterComponent` 
   - `ProductListComponent`
   - `ProductFormComponent`
+  - `intercepter`
+  - `Guard`
+  - `Routing`
 - **Services**
   - `AuthService`: Manages login, logout, and token storage.
   - `ProductService`: Communicates with product APIs.
